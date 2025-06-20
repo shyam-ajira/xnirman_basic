@@ -1,0 +1,84 @@
+    {
+      "fieldname": "char_killa_summary",
+      "fieldtype": "HTML",
+      "label": "Char Killa Details",
+      "read_only": 1
+    }
+
+
+
+    frappe.ui.form.on('Land', {
+    refresh: function(frm) {
+        if (frm.doc.name) {
+            frappe.call({
+                method: 'frappe.client.get_list',
+                args: {
+                    doctype: 'Char Killa',
+                    filters: {
+                        charkila_land: frm.doc.name
+                    },
+                    fields: ['name', 'landscape_type', 'direction', 'site_id']
+                },
+                callback: function(r) {
+                    let wrapper = frm.fields_dict.char_killa_summary.$wrapper;
+                    if (r.message && r.message.length > 0) {
+                        let html = `
+                            <style>
+                                .ck-card {
+                                    background: #f9f9f9;
+                                    border-radius: 10px;
+                                    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+                                    padding: 15px;
+                                    margin-bottom: 12px;
+                                    transition: all 0.3s ease-in-out;
+                                }
+                                .ck-card:hover {
+                                    background: #f1f5ff;
+                                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                                }
+                                .ck-title {
+                                    font-size: 16px;
+                                    font-weight: 600;
+                                    color: #2c3e50;
+                                }
+                                .ck-meta {
+                                    font-size: 14px;
+                                    color: #555;
+                                    margin-top: 4px;
+                                }
+                                .ck-link {
+                                    font-size: 13px;
+                                    color: #007bff;
+                                    text-decoration: none;
+                                }
+                                .ck-link:hover {
+                                    text-decoration: underline;
+                                }
+                            </style>
+                        `;
+
+                        r.message.forEach(row => {
+                            html += `
+                                <div class="ck-card">
+                                    <div class="ck-title">
+                                        <i class="fa fa-map-marker-alt" style="margin-right:6px; color:#0a58ca;"></i>
+                                        <a class="ck-link" href="/app/char-killa/${row.name}" target="_blank">${row.name}</a>
+                                    </div>
+                                    <div class="ck-meta">🌄 <strong>Landscape:</strong> ${row.landscape_type || '—'}</div>
+                                    <div class="ck-meta">🧭 <strong>Direction:</strong> ${row.direction || '—'}</div>
+                                    <div class="ck-meta">📍 <strong>Site Visit:</strong> 
+                                        <a class="ck-link" href="/app/site-visit/${row.site_id}" target="_blank">${row.site_id}</a>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        wrapper.html(html);
+                    } else {
+                        wrapper.html(`<p style="color: #888; font-style: italic;">No Char Killa records linked to this Land.</p>`);
+                    }
+                }
+            });
+        }
+    }
+});

@@ -1,6 +1,6 @@
-## Ajira Mod
+## Xnirman Basic
 
-Ajira Modification
+Xnirman Basic
 
 #### License
 

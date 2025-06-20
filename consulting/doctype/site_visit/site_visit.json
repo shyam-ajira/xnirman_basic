@@ -1,0 +1,218 @@
+{
+  "actions": [],
+  "naming_rule": "By \"Naming Series\" field",
+  "autoname": "naming_series:naming_series",
+  "allow_rename": 0,
+  "creation": "2025-01-27 13:17:20.119526",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "land_owner_dtls",
+    "site_land",
+    "col_break_1",
+    "focal_person_name",
+    "land_owner_name",
+    "col_break_3",
+    "contact",
+    "land_owner_contact",
+    "col_break_4",
+    "land_section",
+    "district",
+    "col_break_5",
+    "municipality",
+    "col_break_6",
+    "ward",
+    "col_break_7",
+    "col_break_8",
+    "gps_coordinates",
+    "gps_location",
+    "col_break_10",
+    "site_measurement_section",
+    "upload_site_measurement",
+    "site_visit_not_required_by_client",
+    "client_testament_section",
+    "site_visit_not_required_by_client_signed_document"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "label": "Series",
+      "no_copy": 1,
+      "options": "SV-.YY.-.###",
+      "print_hide": 1,
+      "reqd": 1,
+      "set_only_once": 1,
+      "hidden": 1,
+      "default": "SV-.YY.-.###"
+    },  
+    {
+      "fieldname": "land_owner_dtls",
+      "fieldtype": "Section Break",
+      "label": "Land Owner Details",
+      "insert_after": null
+    },
+    {
+      "fieldname": "site_land",
+      "label": "Land",
+      "fieldtype": "Link",
+      "options": "Land",
+      "insert_after": "land_owner_dtls"
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break",
+      "insert_after": "focal_person_contact"
+    },
+    {
+      "fieldname": "focal_person_name",
+      "fieldtype": "Data",
+      "label": "Focal Person Name",
+      "insert_after": "col_break_1"
+    },
+    {
+      "fieldname": "land_owner_name",
+      "fieldtype": "Data",
+      "label": "Land Owner Name",
+      "insert_after": "focal_person_name",
+      "in_list_view": 1
+
+    },
+    {
+      "fieldname": "col_break_3",
+      "fieldtype": "Column Break",
+      "insert_after": "land_owner_name"
+    },
+    {
+      "fieldname": "contact",
+      "fieldtype": "Data",
+      "label": "Focal Person Contact",
+      "insert_after": "col_break_3"
+    },
+    {
+      "fieldname": "land_owner_contact",
+      "fieldtype": "Data",
+      "label": "Land Owner Contact",
+      "insert_after": "contact",
+      "read_only": 1
+    },
+    {
+      "fieldname": "col_break_4",
+      "fieldtype": "Column Break",
+      "insert_after": "contact"
+    },
+    {
+      "fieldname": "land_section",
+      "fieldtype": "Section Break",
+      "label": "Land Location",
+      "insert_after": "col_break_4"
+    },
+    {
+      "fieldname": "district",
+      "label": "District",
+      "fieldtype": "Data",
+      "insert_after": "land_section"
+    },
+    {
+      "fieldname": "col_break_5",
+      "fieldtype": "Column Break",
+      "insert_after": "district"
+    },
+    {
+      "fieldname": "municipality",
+      "fieldtype": "Data",
+      "label": "Municipality",
+      "insert_after": "col_break_5",
+      "in_list_view": 1
+
+    },
+    {
+      "fieldname": "col_break_6",
+      "fieldtype": "Column Break",
+      "insert_after": "municipality"
+    },
+    {
+      "fieldname": "ward",
+      "fieldtype": "Int",
+      "label": "Ward",
+      "insert_after": "col_break_6"
+    },
+    {
+      "fieldname": "col_break_7",
+      "fieldtype": "Column Break",
+      "insert_after": "ward"
+    },
+    {
+      "fieldname": "col_break_8",
+      "fieldtype": "Column Break",
+      "insert_after": "col_break_7"
+    },
+    {
+      "fieldname": "gps_coordinates",
+      "fieldtype": "Section Break",
+      "label": "GPS Coordinates",
+      "insert_after": "col_break_8"
+    },
+    {
+      "fieldname": "gps_location",
+      "fieldtype": "Geolocation",
+      "label": "GPS Location",
+      "insert_after": "gps_coordinates"
+    },
+    {
+      "fieldname": "col_break_10",
+      "fieldtype": "Column Break",
+      "insert_after": "gps_location"
+    },
+    {
+      "fieldname": "site_measurement_section",
+      "fieldtype": "Section Break",
+      "label": "Site Measurement"
+    },
+    {
+      "fieldname": "upload_site_measurement",
+      "fieldtype": "Attach Image",
+      "label": "Upload Site Measurement"
+    },
+    {
+      "default": "0",
+      "fieldname": "site_visit_not_required_by_client",
+      "fieldtype": "Check",
+      "label": "Site Visit Not Required (Measurements provided by Client)"
+    },
+    {
+      "fieldname": "client_testament_section",
+      "fieldtype": "Section Break",
+      "label": "Client Testament"
+    },
+    {
+      "fieldname": "site_visit_not_required_by_client_signed_document",
+      "fieldtype": "Attach Image",
+      "label": "Upload Client Testament",
+      "depends_on": "eval:doc.site_visit_not_required_by_client == 1"
+    }
+  ],
+  "index_web_pages_for_search": 1,
+  "modified": "2025-01-27 13:17:20.119526",
+  "modified_by": "Administrator",
+  "module": "Consulting",
+  "name": "Site Visit",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}
