@@ -1,7 +1,7 @@
 app_name = "xnirman_basic"
-app_title = "xnirman Basic"
+app_title = "Xnirman Basic"
 app_publisher = "xnirman "
-app_description = "xnirman"
+app_description = "Basic App"
 app_email = "support.xnirman@gmail.com"
 app_license = "agpl-3.0"
 
@@ -15,7 +15,7 @@ app_license = "agpl-3.0"
 # 	{
 # 		"name": "xnirman_basic",
 # 		"logo": "/assets/xnirman_basic/logo.png",
-# 		"title": "Ajira Mod",
+# 		"title": "Xnirman Basic",
 # 		"route": "/xnirman_basic",
 # 		"has_permission": "xnirman_basic.api.permission.has_app_permission"
 # 	}
@@ -248,7 +248,7 @@ before_uninstall = "xnirman_basic.uninstall.before_uninstall"
 
 
 override_doctype_dashboards = {
-    "Lead": "xnirman_basic.ajira_core.custom.lead.lead_dashboard.get_data"
+    "Lead": "xnirman_basic.xnirman_core.custom.lead.lead_dashboard.get_data"
 }
 
 app_include_js = [

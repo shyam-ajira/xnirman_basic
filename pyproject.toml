@@ -1,9 +1,9 @@
 [project]
-name = "ajira_mod"
+name = "xnirman_basic"
 authors = [
     { name = "Ajira ", email = "support.ajira@gmail.com"}
 ]
-description = "Ajira Modification"
+description = "Xnirman Basicification"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]

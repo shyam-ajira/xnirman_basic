@@ -1,6 +1,6 @@
 import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
-from ajira_mod.ajira_core.custom.custom_fields import create_custom_field
+from xnirman_basic.xnirman_core.custom.custom_fields import create_custom_field
 
 def before_install():
     pass
